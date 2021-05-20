@@ -1,19 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<% 
-	String startNumber = request.getParameter("getstartNumber"); 
-	String amount = request.getParameter("getAmount");
-	int startNumberParse= Integer.parseInt(startNumber);
-	int amountParse= Integer.parseInt(amount);
-	
-%>
-
-<HTML> 
-<HEAD>
-<TITLE> 요청한 페이지 </TITLE> 
-<link rel="stylesheet" href="style.css">
-</HEAD> 
-<BODY> 
-
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+<title> 서울시 와이파이 정보 </title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--이부분은 첫번째 페이지가 들어갈 부분  -->
 <%@ page contentType = "text/html; charset=UTF-8" %> 
 <%@ page import = "java.io.BufferedReader" %>
 <%@ page import = "java.io.File" %>
@@ -34,8 +28,8 @@
 		double lat = 37.3860521; 
 		double Ing = 127.1214038;
 		
-		int fromPT = startNumberParse;
-		int cntPT = amountParse;
+		int fromPT = 1;//startNumberParse;
+		int cntPT = 10;//amountParse;
 		int LineCnt = 1;
 		double min = Double.MAX_VALUE; 
 		double max = Double.MIN_VALUE;
@@ -44,7 +38,8 @@
 		String temp1address ="", temp2address ="";   //가장가까운거리와 먼거리의 주소를 넣어줄 변수 지정, 초기화
 		String temp1lat = "", temp1lng = "";  //위도경도
 		String temp2lat = "", temp2lng = ""; //위도경도
-		out.println("<table style=&quot;box-sizing:border-box;border:1px solid gray; border-collapse:collapse;&quot>");
+		
+		out.println("<table style=&quot;box-sizing:border-box; border : 1px solid gray; border-collapse : collapse;&quot>");
 		out.println("<tr style =&quot;border:1px solid gray&quot;>");
 		out.println("<td style =&quot;border:1px solid gray&quot;>"+"처리횟수"+"</td>"); 
 		out.println("<td style =&quot;border:1px solid gray&quot;>"+"지번주소"+"</td>");
@@ -78,7 +73,6 @@
 <br>
 <br>
 <br>
-<div class ="container">
 <center>
 <a href="http://192.168.23.98:8080/requestPage.jsp?getstartNumber=1&getAmount=10" target="main">&lt;&lt;</a>
 <a href="http://192.168.23.98:8080/requestPage.jsp?getstartNumber=1&getAmount=10" target="main">1</a>
@@ -93,8 +87,5 @@
 <a href="http://192.168.23.98:8080/requestPage.jsp?getstartNumber=91&getAmount=10" target="main">10</a>
 <a href="http://192.168.23.98:8080/requestPage.jsp?getstartNumber=7000&getAmount=10" target="main">&gt;&gt;</a>
 </center>
-</div>
-</BODY>
-</HTML>
-</BODY>
-</HTML>
+</body>
+</html>
