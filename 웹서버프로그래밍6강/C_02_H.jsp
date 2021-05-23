@@ -8,7 +8,7 @@
 <table cellspacing=3 width=600 border=1> 
 	<tr> 
 		<td width=100><a href="A_01_H.jsp">후보등록</a></td> 
-		<td width=100><a href="B_01_1.jsp">투표</a></td>
+		<td width=100><a href="B_01_H.jsp">투표</a></td>
 		<td width=100 bgcolor="#00FFFF">개표결과<a href="C_01_H.jsp"> 
 	</tr> 
 </table> 
