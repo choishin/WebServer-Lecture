@@ -2,6 +2,22 @@
 <%@ page errorPage="Read_error.jsp" contentType = "text/html; charset=utf-8" %>
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page import="java.sql.*, javax.sql.*, java.net.*, java.io.*"%>
+<%
+		Class.forName("com.mysql.cj.jdbc.Driver"); 		 
+														
+	     Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.98:3306/kopoctc","root" , "kopoctc");  
+	     Statement stmt = conn.createStatement(); 		  
+	     ResultSet rset = stmt.executeQuery("select * from examtable"); 
+		 
+	     while (rset.next()) { 
+		     rset.getInt(1),
+	    	 rset.getString(2)
+	      }
+	     
+	     rset.close();
+	     stmt.close(); 
+	     conn.close(); 
+%>
 <html> 
 <head> 
 <title>개표결과 C_02_H.jsp </title> 
