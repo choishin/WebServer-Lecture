@@ -1,5 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<%@ page errorPage="Read_error.jsp" contentType = "text/html; charset=utf-8" %>
 <%@ page contentType="text/html; charset=utf-8" %> 
+<%@ page import="java.sql.*, javax.sql.*, java.net.*, java.io.*"%>
 <html> 
 <head> 
 <title>투표 B_01_H.jsp </title> 
@@ -17,20 +19,32 @@
 	<tr> 
 	<form method="post" action="B_02_H.jsp">
 		<td width=200><p align=center> 
-		<select name=choice>
-			<option value=1>1 김일돌
-			<option value=2>2 김이돌
-			<option value=3>3 김삼돌
-			<option value=4>4 김사돌
-			<option value=4>5 김오돌
+		<select name="tupyo_kiho">
+			<option value='1'>1 김일돌</option>
+			<option value='2'>2 김이돌</option>
+			<option value='3'>3 김삼돌</option>
+			<option value='4'>4 김사돌</option>
+			<option value='5'>5 김오돌</option>
 		</select>
-		</p>
-		</td> 
+		</p></td> 
+		<td width=200><p align=center> 
+		<select name="tupyo_age">
+			<option value='1'>10대</option>
+			<option value='2'>20대</option>
+			<option value='3'>30대</option>
+			<option value='4'>40대</option>
+			<option value='5'>50대</option>
+			<option value='6'>60대</option>
+			<option value='7'>70대</option>
+			<option value='8'>80대</option>
+			<option value='9'>90대</option>
+		</select>
+		</p></td> 
 		<td> 
 		<input type=submit value="투표하기"> 
 		</td>
 	</form>
-	</tr>
+	</tr>	
 	</table> 
 </body> 
 </html>

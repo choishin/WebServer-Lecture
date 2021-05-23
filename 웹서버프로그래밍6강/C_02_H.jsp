@@ -1,5 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<%@ page errorPage="Read_error.jsp" contentType = "text/html; charset=utf-8" %>
 <%@ page contentType="text/html; charset=utf-8" %> 
+<%@ page import="java.sql.*, javax.sql.*, java.net.*, java.io.*"%>
 <html> 
 <head> 
 <title>개표결과 C_02_H.jsp </title> 
