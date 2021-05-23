@@ -9,7 +9,7 @@
 	<tr> 
 		<td width=100><a href="A_01_H.jsp">후보등록</a></td> 
 		<td width=100><a href="B_01_H.jsp">투표</a></td>
-		<td width=100 bgcolor="#00FFFF">개표결과<a href="C_01_H.jsp"> 
+		<td width=100 bgcolor="#00FFFF"><a href="C_01_H.jsp">개표결과</a></td>
 	</tr> 
 </table> 
 	<h1>김일동 후보 득표 성향</h1> 
