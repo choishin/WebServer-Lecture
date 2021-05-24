@@ -14,6 +14,7 @@
 	Statement stmt = conn.createStatement();
 	String ckey = request.getParameter("key");
 	ResultSet rset = stmt.executeQuery("select * from examtable;");
+	
 %>
 <h1>전체 조회</h1>
 <table cellspacing=1 width=600 border=1> 

@@ -25,6 +25,14 @@
 
 <%
 	while (rset.next()) {
+		String name = rset.getString(1);
+		String studentid = Integer.toString(rset.getInt(2));
+		String kor = Integer.toString(rset.getInt(3));
+		String eng = Integer.toString(rset.getInt(4));
+		String mat = Integer.toString(rset.getInt(5));
+		out.println(name);
+		out.println(studentid);
+		
 		out.println("<tr>"); 
 		out.println("<td width=50><p align=center>"+rset.getString(1)+"</p></td>"); 
 		out.println("<td width=50><p align=center>"+Integer.toString(rset.getInt(2)) +"</p></td>"); 

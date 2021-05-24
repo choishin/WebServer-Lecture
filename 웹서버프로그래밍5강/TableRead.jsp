@@ -15,6 +15,7 @@
 	Statement stmt = conn.createStatement();
 	String ckey = request.getParameter("key");
 	ResultSet rset = stmt.executeQuery("select * from examtable where name = '"+ckey+"';");
+	
 %>
 <h1>[<%=ckey%>]조회</h1>
 <table cellspacing=1 width=600 border=1> 
@@ -29,6 +30,12 @@
 <%
 		
 	while (rset.next()) {
+		String name = rset.getString(1);
+		String studentid = Integer.toString(rset.getInt(2));
+		String kor = Integer.toString(rset.getInt(3));
+		String eng = Integer.toString(rset.getInt(4));
+		String mat = Integer.toString(rset.getInt(5));
+	
 		out.println("<tr>"); 
 		out.println("<td width=50><p align=center>"+rset.getString(1)+"</p></td>"); 
 		out.println("<td width=50><p align=center>"+Integer.toString(rset.getInt(2)) +"</p></td>"); 
