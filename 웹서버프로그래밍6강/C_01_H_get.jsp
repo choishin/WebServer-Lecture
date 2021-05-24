@@ -14,7 +14,10 @@
 		<td width=100 bgcolor="#00FFFF"><a href="C_01_H.jsp">개표결과</td>
 	</tr> 
 </table> 
-
+	<form method="get" action="C_02_H.jsp"> 
+	기호: <input type="text" name="tupyo_kiho"><br> 
+			<input type="submit" value="전송"> 
+	</form> 
 <%
 	request.setCharacterEncoding("UTF-8");
 	String tupyo_kiho = request.getParameter("tupyo_kiho");
@@ -45,7 +48,7 @@
 
 	     while (rset.next()) { 
 			 String kiho = rset.getString(1);
-			 String name = rset.getString(2);
+			 int name = rset.getInt(2);
 			 out.println("<h1>"+kiho+"."+name+"후보 득표 성향 분석</h1>"); 
 			 int age10 = rset.getInt(3);
 	    	 int age20 = rset.getInt(4);
@@ -58,18 +61,7 @@
 	    	 int age90 = rset.getInt(11);
 			 int sum = rset.getInt(12);
 			 int percent = rset.getInt(13);
-%>
-	<style>
-        /* UI Object 가로 */
-        .h_graph ul{margin:0 50px 0 50px;padding:1px 0 0 0;border:1px solid #ddd;border-top:0;border-right:0;font-size:11px;font-family:Tahoma, Geneva, sans-serif;list-style:none}
-        .h_graph li{position:relative;margin:10px 0;vertical-align:top;white-space:nowrap}
-        .h_graph .g_term{position:absolute;top:0;left:-50px;width:40px;font-weight:bold;color:#767676;line-height:20px;text-align:right}
-        .h_graph .g_bar{display:inline-block;position:relative;height:20px;border:1px solid #ccc;border-left:0;background:#e9e9e9}
-        .h_graph .g_bar span{position:absolute;top:0;right:-50px;width:40px;color:#767676;line-height:20px}
-	</style>
-		<div class="h_graph">
-		 <ul>
-<%			 
+			 
 			out.println("<li><span class='g_term'>"+"10대"+"</span><span class='g_bar' style='width:"+(age10/sum)+"%'><span>"+age10+"("+(age10/sum)+"%)"+"</span></span></li>");
 			out.println("<li><span class='g_term'>"+"20대"+"</span><span class='g_bar' style='width:"+(age20/sum)+"%'><span>"+age20+"("+(age20/sum)+"%)"+"</span></span></li>");
 			out.println("<li><span class='g_term'>"+"30대"+"</span><span class='g_bar' style='width:"+(age30/sum)+"%'><span>"+age30+"("+(age20/sum)+"%)"+"</span></span></li>");
@@ -80,15 +72,11 @@
 			out.println("<li><span class='g_term'>"+"80대"+"</span><span class='g_bar' style='width:"+(age80/sum)+"%'><span>"+age80+"("+(age80/sum)+"%)"+"</span></span></li>");
 			out.println("<li><span class='g_term'>"+"90대"+"</span><span class='g_bar' style='width:"+(age90/sum)+"%'><span>"+age90+"("+(age90/sum)+"%)"+"</span></span></li>");
 		}
-			 rset.close();
-			 stmt.close(); 
-			 conn.close(); 
-		
-%>
-</ul>
-</div>
-<%
-		}catch(Exception e) {
+	     rset.close();
+	     stmt.close(); 
+	     conn.close(); 
+		}
+		catch(Exception e) {
 			out.println(e);
 		}
 %>

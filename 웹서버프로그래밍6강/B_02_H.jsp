@@ -43,7 +43,7 @@ String[] tupyo_age = request.getParameterValues("tupyo_age");
 <%
 		try{
 		 Class.forName("com.mysql.cj.jdbc.Driver"); 							
-	     Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.147.18:3306/kopoctc","root" , "kopoctc");  
+	     Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.98:3306/kopoctc","root" , "kopoctc");  
 	     Statement stmt = conn.createStatement(); 		
 	     
 	     stmt.execute("insert into tupyo_table values("+kiho+",'"+age+"');");

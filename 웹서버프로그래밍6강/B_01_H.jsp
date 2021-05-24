@@ -2,6 +2,14 @@
 <%@ page errorPage="Read_error.jsp" contentType = "text/html; charset=utf-8" %>
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page import="java.sql.*, javax.sql.*, java.net.*, java.io.*"%>
+<%
+	try{
+		 Class.forName("com.mysql.cj.jdbc.Driver");  							
+	     Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.98:3306/kopoctc","root" , "kopoctc");  
+	     Statement stmt = conn.createStatement(); 		
+	     ResultSet rset = stmt.executeQuery("select * from hubo_table ;");
+		 
+%>
 <html> 
 <head> 
 <title>투표 B_01_H.jsp </title> 
@@ -20,11 +28,20 @@
 	<form method="post" action="B_02_H.jsp">
 		<td width=200><p align=center> 
 		<select name="tupyo_kiho">
-			<option value='1'>1 김일돌</option>
-			<option value='2'>2 김이돌</option>
-			<option value='3'>3 김삼돌</option>
-			<option value='4'>4 김사돌</option>
-			<option value='5'>5 김오돌</option>
+<%
+		int hubo_kiho=0;
+		String hubo_name = "";
+		while (rset.next()) { 
+			hubo_kiho = rset.getInt(1);
+			hubo_name = rset.getString(2);
+			out.println("<option value='"+hubo_kiho+"'>"+hubo_kiho+" "+hubo_name+"</option>");	
+		}
+		 stmt.close(); 
+	     conn.close();
+	} catch (Exception e) {
+			out.println(e);
+	}
+%>
 		</select>
 		</p></td> 
 		<td width=200><p align=center> 

@@ -25,7 +25,7 @@
 <%
 		try{
 		 Class.forName("com.mysql.cj.jdbc.Driver");  							
-	     Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.147.18:3306/kopoctc","root" , "kopoctc");  
+	     Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.98:3306/kopoctc","root" , "kopoctc");  
 	     Statement stmt = conn.createStatement(); 		
 	     
 	     stmt.execute("DELETE FROM hubo_table WHERE hubo_kiho="+hubo_kiho+" and hubo_name='"+hubo_name+"';"); 		
