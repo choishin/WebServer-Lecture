@@ -2,6 +2,43 @@
 <%@ page errorPage="Read_error.jsp" contentType = "text/html; charset=utf-8" %>
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page import="java.sql.*, javax.sql.*, java.net.*, java.io.*"%>
+<html> 
+<head> 
+<title>투표 B_01_H.jsp </title> 
+<style>
+table{
+	    border-collapse: collapse;
+        border-spacing: 0px;
+		margin:0 50px 0 50px;
+		padding:1px 0 0 0;
+		border:1px solid #ddd;
+		border-top:0;
+		border-right:0;
+		font-size:15px;
+		font-family:Tahoma, Geneva, sans-serif;
+		list-style:none
+}
+.title {
+		margin-left: 50px;
+}
+</style>
+</head> 
+<body LINK= "#767676" VLINK="#767676"> 
+<table cellspacing=3 width=600 border=1> 
+	<tr> 
+		<td width=100><a href="A_01_H.jsp">후보등록</a></td> 
+		<td width=100 bgcolor="#ddd"><a href="B_01_H.jsp">투표</a></td>
+		<td width=100><a href="C_01_H.jsp">개표결과</a></td>
+	</tr> 
+</table> 
+<div class="title">
+<h1 style="font-weight:bold;color:#767676">투표하기</h1> 
+</div>
+<table cellspacing=3 width=600 border=1>
+	<tr> 
+	<form method="post" action="B_02_H.jsp">
+		<td width=200><p align=center> 
+		<select name="tupyo_kiho">
 <%
 	try{
 		 Class.forName("com.mysql.cj.jdbc.Driver");  							
@@ -10,24 +47,6 @@
 	     ResultSet rset = stmt.executeQuery("select * from hubo_table ;");
 		 
 %>
-<html> 
-<head> 
-<title>투표 B_01_H.jsp </title> 
-</head> 
-<body> 
-<table cellspacing=3 width=600 border=1> 
-	<tr> 
-		<td width=100><a href="A_01_H.jsp">후보등록</a></td> 
-		<td width=100 bgcolor="#00FFFF"><a href="B_01_H.jsp">투표</a></td>
-		<td width=100><a href="C_01_H.jsp">개표결과</a></td>
-	</tr> 
-</table> 
-<h1>투표하기</h1> 
-<table cellspacing=3 width=600 border=1>
-	<tr> 
-	<form method="post" action="B_02_H.jsp">
-		<td width=200><p align=center> 
-		<select name="tupyo_kiho">
 <%
 		int hubo_kiho=0;
 		String hubo_name = "";
