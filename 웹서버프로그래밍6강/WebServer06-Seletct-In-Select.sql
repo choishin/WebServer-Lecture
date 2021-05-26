@@ -7,10 +7,6 @@ select count(tupyo_kiho) from tupyo_table;
 select a.hubo_kiho, a.hubo_name, count(b.tupyo_kiho) as sum, (select count(b.tupyo_kiho)/count(tupyo_kiho) from tupyo_table)*100 
 from tupyo_table as b, hubo_table as a where a.hubo_kiho=b.tupyo_kiho group by a.hubo_kiho;
 
-
-select case when count(tupyo_kiho) then 0 end from tupyo_table;
-
-
 #기호번호, 이름, 연령별 득표수, 득표율
 select
 a.hubo_kiho,
@@ -29,3 +25,10 @@ a.hubo_name,
 from tupyo_table as b, hubo_table as a 
 where a.hubo_kiho=3
 group by a.hubo_kiho=3;
+
+
+#득표가 없는 후보까지 출력할 수 있는 쿼리
+select *, (select count(*) from tupyo_table as b where a.hubo_kiho=b.tupyo_kiho) as 득표수, ((select count(*) from tupyo_table as b 
+where a.hubo_kiho=b.tupyo_kiho)/(select count(*) from tupyo_table))*100 as 득표율 from hubo_table as a;
+select *, (select count(*) from tupyo_table as b where a.hubo_kiho=b.tupyo_kiho),((select count(*) from tupyo_table as b 
+where a.hubo_kiho=b.tupyo_kiho)/(select count(*) from tupyo_table))*100  from hubo_table as a;
