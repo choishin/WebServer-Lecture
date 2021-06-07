@@ -1,41 +1,47 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" %> 
-<%@ page import="java.sql.*" %> 
-<%@ page import="java.sql.*,javax.sql.*,java.net.*,java.io.*" %> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<%@ page contentType="text/html; charset=utf-8" %> 
+<%@ page import="java.sql.*, javax.sql.*,java.io.*" %> 
 <html> 
-<head> 
+<head>
 </head> 
-<body> 
-<h1>Make table</h1>
-<%
-	Class.forName("com.mysql.jdbc.Driver"); 
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/sjcu", "root", "sjcu1234"); 
-	Statement stmt = conn.create Statemento;
-	Try { 
-	// stmt.execute("drop table gongji");
-	   out.println("drop table gongji OK<br>'); 
-	}catch( Exception e) {
-		out.println("drop table gongji NOT OK<br>"); 
-		out.println( e.toString();
-%> 
-<% 
-	stmt.execute("create table gongji"
-		id int not null primary key auto-increment, 
-		title varchar(70), 
-		date date, 
-		content text);"); 
-%> 
-<%
-	String sal=""; 
-	sql="insert into gongji(title, date, content) values(' $1.date(nowo), A8481')"; 
-	stmt.execute(sal); 
-	sql ="insert into gongji (title, date,content) values(' |182date (nowo), A8482 )"; 
-	stmt.execute(sal); 
-	sql ="insert into gongji (title, date,content) values(2|1813, date (nowo), A843)"; 
-	stmt.execute(sql); 
-	sql ="insert into gongji (title, date, content) values( | AF84',date (nowo), A 4 84')"
-	stmt.execute(sal);
-	sql ="insert into gongji (title, date,content) values( AF85' date(now). | 1784 85')"; 
-	stmt.execute(sal); stmt.close(); conn.closeO;
+<body>
+ <h1>테이블 만들기</h1>
+ <%
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc", "root", "kopoctc");
+	Statement stmt = conn.createStatement(); 
 %>
+<%
+try{
+	stmt.execute("drop table gongji");
+	out.println("drop table gongji OK<br>");
+}
+catch (Exception e) {
+	out.println("drop table gongji Not OK<br>");
+	out.println(e.toString());
+}
+%>
+<%
+	stmt.execute("create table gongji("
+				+ "id int not null primary key auto_increment,"
+				+ "title varchar (70),"
+				+ "date date,"
+				+ "content text);"); 
+	out.println("create table OK<br>");
+%>
+<%
+	String sql = "";
+	int amount =5;
+	
+	for(int i =1; i<=amount; i++) {
+	sql = "insert into gongji(title,date,content) value('공지"+i+"',date(now()),'공지내용"+i+"')";
+	stmt.execute(sql);	
+	}
+	out.println("inser data OK<br>");
+	
+	stmt.close();
+	conn.close(); 
+%> 
 </body> 
 </html>

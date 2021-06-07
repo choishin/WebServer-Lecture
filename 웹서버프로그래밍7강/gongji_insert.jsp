@@ -1,21 +1,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page import="java.sql.*, javax.sql.*, java.io.*" %> 
-<% 
-	request.setCharacterEncoding("UTF-8");
-	String get_id = request.getParameter("get_id"); 	
-%>
 <html> 
-<head>
-<SCRIPT LANGUAGE="JavaScript"> 
-function submitForm(mode){ 
-if(mode == "set"){
-	fm.action == "gongji_set.jsp";
-	}else if(mode = "delete"){
-	fm.action == "gongji_delete.jsp";
-	}
+<head> 
+<SCRIPT LANGUAGE="JavaScript">
+function submitForm(mode){
+	fm.action = "gongji_write.jsp?key=INSERT"; 
 	fm.submit();
-	}
+}
 function getDate(){
 	var now = new Date();
 	var year = now.getFullYear();
@@ -36,36 +28,32 @@ try{
 		Statement stmt = conn.createStatement(); 
 			
 		String QueryTxt;
-		QueryTxt = String.format("select * from gongji where id="+get_id+";");
+		QueryTxt = String.format("select count(*) from gongji;");
 		
 		ResultSet rset = stmt.executeQuery(QueryTxt);
-		String id = "";
-		String title = "";
-		String date = "";
-		String content = "";
+		int get_id=0;
 		while(rset.next()) {
-			id = rset.getString(1);
-			title = rset.getString(2);
-			date = rset.getString(3);
-			content = rset.getString(4);
+			String id = rset.getString(1);
+			get_id =Integer.parseInt(id);
 		}
 				
 %>
-<FORM METHOD=POST name='fm' action="gongji_set.jsp"> 
+<FORM METHOD=POST name='fm'> 
 <table width=650 border=1 cellspacing=0 cellpadding=5>
 <tr>
 <td><b>번호</b></td> 
-<td><input type=text name=get_id value=<%=get_id%> readonly></td>
+<td><input type=text name=get_id value=<%=get_id+1%> readonly></td>
 </tr>
 <tr>
 <td><b>제목</b></td> 
-<td><input type=text name=get_title size=70 maxlength=70 value=<%=title%> onkeyup='characterCheck(this);' onkeydown='characterCheck(this);' onchange='noSpaceForm(this);' autocomplete='off' required></td>
+<td><input type=text name=get_title size=70 maxlength=70 onkeyup='characterCheck(this); noSpaceForm(this);' onkeydown='characterCheck(this); noSpaceForm(this);' onchange='noSpaceForm(this);' autocomplete='off' onpaste='return false;' required></td>
 </tr>
 <td><b>일자</b></td> 
 <td><script>getDate()</script></td>
+<!--<input type=text name=get_date readonly></td>-->
 </tr>
 <td><b>내용</b></td> 
-<td><textarea style='width:500px; height:250px;' name=get_content cols=70 row=600 onkeyup='characterCheck(this);' onkeydown='characterCheck(this);' onchange='noSpaceForm(this);' autocomplete='off' required><%=content%></textarea></td>
+<td><textarea style='width:500px; height:250px;' name=get_content cols=70 row=600 onkeyup='characterCheck(this); noSpaceForm(this);' onkeydown='characterCheck(this); noSpaceForm(this);' onchange='noSpaceForm(this);' autocomplete='off' onpaste='return false;' required></textarea></td>
 </tr> 
 </table> 
 <%
@@ -82,8 +70,7 @@ catch (Exception e) {
 <tr>
 <td width=600></td> 
 <td><input type=button value="취소" OnClick="location.href='gongji_list.jsp'"></td> 
-<td><input type=button value="수정" OnClick="submitForm('set')"></td>
-<td><input type=button value="삭제" OnClick="submitForm('delete')"></td>
+<td><input type=button value="쓰기" OnClick="submitForm('write')"></td>
 </tr>
 </table> 
 </FORM> 
