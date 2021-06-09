@@ -8,14 +8,6 @@
 <html> 
 <head>
 <SCRIPT LANGUAGE="JavaScript"> 
-function submitForm(mode){ 
-if(mode == "set"){
-	fm.action == "gongji_set.jsp";
-	}else if(mode = "delete"){
-	fm.action == "gongji_delete.jsp";
-	}
-	fm.submit();
-	}
 function getDate(){
 	var now = new Date();
 	var year = now.getFullYear();
@@ -51,7 +43,8 @@ try{
 		}
 				
 %>
-<FORM METHOD=POST name='fm' action="gongji_set.jsp"> 
+<!--<FORM METHOD=POST action="gongji_set.jsp"> -->
+<FORM METHOD=POST> 
 <table width=650 border=1 cellspacing=0 cellpadding=5>
 <tr>
 <td><b>번호</b></td> 
@@ -83,7 +76,7 @@ catch (Exception e) {
 <td width=600></td> 
 <td><input type=button value="취소" OnClick="location.href='gongji_list.jsp'"></td> 
 <td><input type=button value="수정" OnClick="submitForm('set')"></td>
-<td><input type=button value="삭제" OnClick="submitForm('delete')"></td>
+<td><input type=button value="삭제" OnClick="location.href='gongji_delete.jsp?get_id=<%=get_id%>'"></td>
 </tr>
 </table> 
 </FORM> 
