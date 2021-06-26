@@ -43,8 +43,7 @@ try{
 		}
 				
 %>
-<!--<FORM METHOD=POST action="gongji_set.jsp"> -->
-<FORM METHOD=POST> 
+<form method="post" action="gongji_set.jsp"> 
 <table width=650 border=1 cellspacing=0 cellpadding=5>
 <tr>
 <td><b>번호</b></td> 
@@ -59,7 +58,7 @@ try{
 </tr>
 <td><b>내용</b></td> 
 <td><textarea style='width:500px; height:250px;' name=get_content cols=70 row=600 onkeyup='characterCheck(this);' onkeydown='characterCheck(this);' onchange='noSpaceForm(this);' autocomplete='off' required><%=content%></textarea></td>
-</tr> 
+</tr>
 </table> 
 <%
 		rset.close();
@@ -75,11 +74,11 @@ catch (Exception e) {
 <tr>
 <td width=600></td> 
 <td><input type=button value="취소" OnClick="location.href='gongji_list.jsp'"></td> 
-<td><input type=button value="수정" OnClick="submitForm('set')"></td>
+<td><input type="submit" value="수정"></td>
 <td><input type=button value="삭제" OnClick="location.href='gongji_delete.jsp?get_id=<%=get_id%>'"></td>
 </tr>
 </table> 
-</FORM> 
+</form> 
 <script>
 function characterCheck(obj){
 	var regExp = /[\{\}\\?.,;(\)*~~\'!^-_+<>!\#$%&\'\"\(\=]/gi;

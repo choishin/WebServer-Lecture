@@ -14,33 +14,21 @@
 %>
 <%
 try{
-	stmt.execute("drop table gongji");
-	out.println("drop table gongji OK<br>");
+	stmt.execute("drop table comments");
+	out.println("drop table comments OK<br>");
 }
 catch (Exception e) {
-	out.println("drop table gongji Not OK<br>");
+	out.println("drop table commments Not OK<br>");
 	out.println(e.toString());
 }
 %>
 <%
-	stmt.execute("create table gongji("
-				+ "id int not null primary key auto_increment,"
-				+ "title varchar (70),"
-				+ "date datetime,"
-				+ "content text,"
-				+ "viewcnt int);"); 
+	stmt.execute("create table comments("
+				+ "post_id int not null,"
+				+ "comment_name varchar(20),"
+				+ "comment_contents varchar(200),"
+				+ "comment_date datetime);"); 
 	out.println("create table OK<br>");
-%>
-<%
-	String sql = "";
-	int amount =5;
-	
-	for(int i =1; i<=amount; i++) {
-	sql = "insert into gongji(title,date,content,viewcnt) value('공지"+i+"',date_format(now(),'%Y-%m-%d %I:%i:%s'),'공지내용"+i+"',0)";
-	stmt.execute(sql);	
-	}
-	out.println("inser data OK<br>");
-	
 	stmt.close();
 	conn.close(); 
 %> 

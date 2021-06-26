@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        역이름 : <input type="text" v-model="subway">
+        <span v-if="isLoading">로딩중...</span>
+        <div>
+            <ul>
+                <li v-for="item in items">
+                    {{ item.trainLineNm }}, {{ item.arvlMsg2 }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                items: [],
+                subway: '',
+                isLoading: false
+            },
+            created: function () {
+                this.debouncedGetDatas = _.debounce(subway => this.getDatas(subway), 1500)
+            },
+            watch: {
+                subway: function (val) {
+                    if (val = '') {
+                        return;
+                    }
+                    this.debouncedGetDatas(val);
+                }
+            },
+            created: function () {
+                this.getDatas('서현')
+            },
+            methods: {
+                getDatas: function (subway) {
+                    this.isLoading = true;
+                    axios.get('http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/' + subway)
+                    .then(response => {
+                        this.items = response.data.realtimeArrivalList
+                        this.isLoading = false
+                        });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

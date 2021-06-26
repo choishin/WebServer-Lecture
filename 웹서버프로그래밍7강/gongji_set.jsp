@@ -4,9 +4,9 @@
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String get_id = request.getParameter("get_id"); 	
-	String get_title = request.getParameter("get_title"); 	
-	String get_date = request.getParameter("get_date"); 	
+	String get_title = request.getParameter("get_title"); 		
 	String get_content = request.getParameter("get_content"); 	
+	
 %>
 <html> 
 <head> 

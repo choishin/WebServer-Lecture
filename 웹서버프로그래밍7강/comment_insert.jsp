@@ -3,19 +3,18 @@
 <%@ page import="java.sql.*, javax.sql.*, java.io.*" %> 
 <% 
 	request.setCharacterEncoding("UTF-8");
-	String get_id = request.getParameter("get_id"); 	
-	String get_title = request.getParameter("get_title"); 	
-	String get_date = request.getParameter("get_date"); 	
-	String get_content = request.getParameter("get_content"); 	
+	String post_id = request.getParameter("post_id"); 
+	String comment_name = request.getParameter("comment_name"); 	
+	String comment_contents = request.getParameter("comment_contents"); 		
+	
+	out.println(post_id);
+	out.println(comment_name);
+	out.println(comment_contents);
 %>
 <html> 
-<head> 
-<SCRIPT LANGUAGE="JavaScript">
-function submitForm(mode){
-	fm.action = "gongji_write.jsp"; 
-	fm.submit();
-}
-function getDate() {
+<head>
+<SCRIPT LANGUAGE="JavaScript"> 
+function getDate(){
 	var now = new Date();
 	var year = now.getFullYear();
 	var month = now.getMonth();
@@ -33,27 +32,39 @@ try{
 		Class.forName("com.mysql.cj.jdbc.Driver");  													
 		Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.23.98:3306/kopoctc","root" , "kopoctc");  
 		Statement stmt = conn.createStatement(); 
-			
+		
 		String QueryTxt;
-		QueryTxt = "insert into gongji(title,date,content) value('"+get_title+"',date(now()),'"+get_content+"')";
+		QueryTxt = "insert into comments(post_id,comment_name,comment_contents,comment_date) value ("+post_id+",'"+comment_name+"','"+comment_contents+"',date_format(now(),'%Y-%m-%d %I:%i:%s'));";
 		stmt.execute(QueryTxt);	
-		out.print("<h1>게시물 등록 완료</h1>");		
+		out.println("<h1>댓글작성완료</h1>");
+							
 %>
 <%
 		stmt.close(); 
 		conn.close(); 
+
 }
 catch (Exception e) {
 	out.print(e);
 }
 %>
-<table width=650>
-<tr>
-<td width=600></td> 
-<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp'"></td> 
-<td><input type=button value="쓰기" OnClick="location.href='gongji_insert.jsp'"></td>
-</tr>
-</table> 
-</FORM> 
+<script>
+window.location="gongji_view.jsp?get_id=<%=post_id%>";
+function characterCheck(obj){
+	var regExp = /[\{\}\\?.,;(\)*~~\'!^-_+<>!\#$%&\'\"\(\=]/gi;
+	if( regExp.test(obj.value) ) {
+	alert('특수문자는 입력하실수 없습니다.');
+	obj.value = obj.value.substring(0, obj.value.length - 1 );
+	}
+}
+function noSpaceForm(obj) { 
+	var str_space = /\s/;
+	if(str_space.exec(obj.value)) { 
+		alert("해당 항목에는 공백을 사용할수 없습니다.");
+		obj.focus();
+		obj.value = obj.value.replace(' ',''); 
+	}
+}
+</script>
 </body> 
 </html>

@@ -1,9 +1,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <%@ page contentType="text/html; charset=utf-8" %> 
 <%@ page import="java.sql.*, javax.sql.*, java.io.*" %> 
+<% 
+	request.setCharacterEncoding("UTF-8");
+	String keyword = request.getParameter("keyword"); 	
+%>
 <html> 
-<head> 
-<SCRIPT LANGUAGE="JavaScript">
+<head>
+<SCRIPT LANGUAGE="JavaScript"> 
 function getDate(){
 	var now = new Date();
 	var year = now.getFullYear();
@@ -24,39 +28,40 @@ try{
 		Statement stmt = conn.createStatement(); 
 			
 		String QueryTxt;
-		QueryTxt = String.format("select max(id) from gongji;");
+		QueryTxt = String.format("SELECT * FROM gongji WHERE title LIKE '%%"+keyword+"%%' or content like '%%"+keyword+"%%';");
 		
 		ResultSet rset = stmt.executeQuery(QueryTxt);
-		int get_id=0;
+		String id = "";
+		String title = "";
+		String date = "";
+		String content = "";
 		while(rset.next()) {
-			String id = rset.getString(1);
-			get_id =Integer.parseInt(id);
+			id = rset.getString(1);
+			title = rset.getString(2);
+			date = rset.getString(3);
+			content = rset.getString(4);
+			
+			out.println("<table>");
+			out.println("<tr>");
+			out.println("<td>");
+			out.println(id);
+			out.println("</td>");
+			out.println("<td>");
+			out.println(title);
+			out.println("</td>");
+			out.println("<td>");
+			out.println(date);
+			out.println("</td>");
+			out.println("<td>");
+			out.println(content);
+			out.println("</td>");
+			out.println("</tr>");
+			out.println("</table>");
+			
+			
 		}
 				
-%>
-<FORM METHOD=POST action="gongji_write.jsp"> 
-<table width=650 border=1 cellspacing=0 cellpadding=5>
-<tr>
-<td><b>번호</b></td> 
-<td><input type=text name=get_id value=<%=get_id+1%> readonly></td>
-</tr>
-<tr>
-<td>조회수</td>
-<td><input type=text name=get_viewcnt value=0 readonly></td>
-</tr>
-<tr>
-<td><b>제목</b></td> 
-<td><input type=text name=get_title size="20" maxlength="70" minlength="1" required></td>
-</tr>
-<td><b>일자</b></td> 
-<td><script>getDate()</script></td>
-<!--<input type=text name=get_date readonly></td>-->
-</tr>
-<td><b>내용</b></td> 
-<td><textarea style='width:500px; height:250px;' name=get_content cols=70 row=600 required></textarea></td>
-</tr> 
-</table> 
-<%
+
 		rset.close();
 		stmt.close(); 
 		conn.close(); 
@@ -69,11 +74,11 @@ catch (Exception e) {
 <table width=650>
 <tr>
 <td width=600></td> 
-<td><input type=button value="취소" OnClick="location.href='gongji_list.jsp'"></td> 
-<td><input type='submit' value="쓰기"></td>
+<td><input type=button value="목록" OnClick="location.href='gongji_list.jsp'"></td> 
+<td><input type=button value="새글" OnClick="location.href='gongji_insert.jsp'"></td> 
 </tr>
 </table> 
-</FORM> 
+</form> 
 <script>
 function characterCheck(obj){
 	var regExp = /[\{\}\\?.,;(\)*~~\'!^-_+<>!\#$%&\'\"\(\=]/gi;

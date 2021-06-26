@@ -22,6 +22,10 @@ if(mode = "write"){
 	글번호: <input type="text" name="get_id"><br> 
 	<input type="submit" value="전송"> 
 </form> 
+<form method="get" action="comment_insert.jsp"> 
+	글번호: <input type="text" name="post_id"><br> 
+	<input type="submit" value="전송"> 
+</form> 
  
 <table width=650>
 <tr>
