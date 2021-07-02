@@ -1,0 +1,31 @@
+<HTML> 
+<HEAD> 
+<meta charset="UTF-8">
+<SCRIPT LANGUAGE="JavaScript">
+</SCRIPT> 
+</HEAD>
+<BODY>
+<script>
+var arr = new Array("빨간색", 1010, "deadfire", "Javascript", "XX");
+document.write("<H2>Original</H2>"); 
+for(i = 0; i<arr.length;i++){
+document.write("arr ["+i+"] : " + arr[i] + "<BR>");
+}
+arr.sort(); 
+document.write("<HR><H2>기본정렬</H2>"); 
+for(i=0; i<arr.length;i++){
+document.write("arr ["+i+"] : " + arr[i] + "<BR>");
+}
+function compare(a, b){
+if( a <b) return 1; 
+else if( a > b) return -1; 
+else return 0;
+}
+arr.sort( compare ); 
+document.write("<H2>역순정렬</H2>"); 
+for(i=0;i<arr.length;i++){
+document.write("arr ["+i+"] : " + arr[i] + "<BR>");
+}
+</script>
+</body>
+<html>

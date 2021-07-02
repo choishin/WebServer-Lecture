@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<script>
+	let items = { 
+				  0 : "[서울우유] 체다 슬라이스 치즈(300g2개입)"
+				, 1 : "(G)LH원형유리화병10"
+				, 2 : "사양벌꿀 1.5kg"
+				, 3 : "해피홈 SAFE 핸드워시"
+				, 4 : "[찹쌀치킨스틱"
+				, 5 : "CJ 비비고 도톰한 삼치구이 60g"
+				, 6 : "100년 역사의 시원한 맛 김치"
+				, 7 : "[튀김공방]찹쌀치킨스틱"
+				, 8 : "훈제오리 500g*2"
+				, 9 : "순살닭강정(g)"
+				, 10 : "CJ백설매실청310ml"
+				, 11 : "DZ주니어양말3족C_WH"
+				, 12 : "[파티셰리 마담정] 쌀큐브 세트"
+				, 13 : "[피코크] 송탄식 부대찌개 738g"
+				, 14 : "[서울우유] 서울우유 1000ml 나100% "
+				, 15 : "[빙그레] 바나나맛 우유(240ml4개) 960ml"
+				, 16 : "진라면소컵(매)65g*6"
+				, 17 : "케라시스 앰플 트리트"
+				, 18 : "[활][국산] 완도 활 전복 (대, 70g내외/1미)"
+				, 19 : "[냉장][노르웨이] 연어회 (150g)"
+				, 20 : "CJ비비고왕교자만두"
+				, 21:"[서울우유] 커피 삼각 포리 (200ml*3개)"
+				, 22:"흑원당 말차 밀크티꺄~~~~~~~~~~"
+				, 23 : "1+ 등급란 10개입 특별하다특별해"
+				, 24:"[프리미엄] 미국산 고당도 퓨어스펙 오렌지 1.5kg (봉)"
+				, 25 : "양면 틈새 청소 브러"
+				, 26:"흡착 발 브러쉬"
+				, 27:"집게형 헤어롤 3p"
+				, 28:"코털가위"
+				, 29 : "[이마트 특별기획] 부드럽고촉촉한꿀우유식빵 "
+				, 30:"롯데 ABC초콜릿 600g"
+				};
+				
+	let prices = [99000,2300,120,1000,1000,
+				  1000,1000,1000,1000,1000,
+				  1000,1000,1000,1000,1000,
+				  1000,1000,1000,1000,1000,
+				  1000,1000,1000,1000,1000,
+				  1000,1000,1000,1000,1000,1000];
+	let num =  [9,1,1,1,1,
+				1,1,1,1,1,
+				1,1,1,1,1,
+				1,1,1,1,1,
+				1,1,1,1,1,
+				1,1,1,1,1,1];		
+				
+	let taxfree = [true,false,true,true,false,
+				false,false,false,true,false,
+				true,false,false,false,false,
+				false,true,false,false,false,
+				true,false,false,false,false,
+				true,false,false,false,false,
+				false];
+
+document.write('<h2> 영수증 출력 </h2>');
+document.write('<table style ="box sizing: border-box; border: 1px solid gray; border-collapse: collapse;">');
+document.write('<tr style ="border:1px solid gray">');
+document.write('<td style ="border:1px solid gray">'+'상품명'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'단가'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'수량'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'금액'+'</td>');
+document.write('</tr>');
+for(let i = 0; i <prices.length; i++) {
+let tax_mark = "";
+	if (taxfree[i]==true) {
+		tax_mark="*";
+		}
+	else{
+		tax_mark="";
+		}
+document.write('<tr style ="border:1px solid gray">');
+document.write('<td style ="border:1px solid gray">'+tax_mark+'</td>');
+document.write('<td style ="border:1px solid gray">'+items[i]+'</td>');
+document.write('<td style ="border:1px solid gray">'+prices[i]+'</td>');
+document.write('<td style ="border:1px solid gray">'+num[i]+'</td>');
+document.write('</tr>');
+}
+document.write('</table>');				
+</script>
+</body>
+</html>

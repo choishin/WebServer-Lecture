@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<SCRIPT>
+function call(score) {
+	console.log(score);
+	
+	switch(true) {
+		case (score>=4.5): 
+			document.write("A+");      
+		break;    
+		case (score>=4.0):    
+			document.write("A");      
+		break;  
+		case (score>=3.5):   
+			document.write("B+");       
+		break;   
+		case (score>=3.0):   
+			document.write("B");       
+		break; 
+		case (score>=2.5):   
+			document.write("C+");       
+		break;  
+		case (score>=2.0):   
+			document.write("C");       
+		break; 
+		case (score>=1.5):   
+			document.write("D+");       
+		break;  
+		default:
+			document.write("F"); 		      
+		break;
+	}
+}
+
+</script>
+</head>
+<body>
+<script>
+call(3.8);
+</script>
+</body>
+</html>

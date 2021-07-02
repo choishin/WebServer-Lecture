@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<script>
+
+document.write('<h2> 성적표 출력 </h2>');
+document.write('<table style ="box sizing: border-box; border: 1px solid gray; border-collapse: collapse;">');
+document.write('<tr style ="border:1px solid gray">');
+document.write('<td style ="border:1px solid gray">'+'번호'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'이름'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'국어'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'영어'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'수학'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'총점'+'</td>');
+document.write('<td style ="border:1px solid gray">'+'평균'+'</td>');
+document.write('</tr>');
+let kor_sum = 0;
+let eng_sum = 0;
+let mat_sum = 0;
+let total_sum =0;
+let total_avr =0;
+for(let i = 1; i <31; i++) {
+let kor = Math.floor(Math.random()*100);
+let eng = Math.floor(Math.random()*100);
+let mat = Math.floor(Math.random()*100);
+kor_sum = kor_sum+kor;
+eng_sum = eng_sum+eng;
+mat_sum = mat_sum+mat;
+total_sum = total_sum+(kor+eng+mat);
+total_avr = total_avr+(kor+eng+mat)/3;
+document.write('<tr style ="border:1px solid gray">');
+document.write('<td style ="border:1px solid gray">'+i+'</td>');
+document.write('<td style ="border:1px solid gray">'+'학생'+i+'</td>');
+document.write('<td style ="border:1px solid gray">'+kor+'</td>');
+document.write('<td style ="border:1px solid gray">'+eng+'</td>');
+document.write('<td style ="border:1px solid gray">'+mat+'</td>');
+document.write('<td style ="border:1px solid gray">'+(kor+eng+mat)+'</td>');
+document.write('<td style ="border:1px solid gray">'+(kor+eng+mat)/3+'</td>');
+document.write('</tr>');
+}
+document.write('<tr style ="border:1px solid gray">');		
+document.write('<td colpan="2" style ="border:1px solid gray">'+'합계'+'</td>');
+document.write('<td style ="border:1px solid gray">'+kor_sum+'</td>');
+document.write('<td style ="border:1px solid gray">'+eng_sum+'</td>');
+document.write('<td style ="border:1px solid gray">'+mat_sum+'</td>');
+document.write('<td style ="border:1px solid gray">'+total_sum+'</td>');
+document.write('<td style ="border:1px solid gray">'+total_avr+'</td>');
+document.write('</tr>');
+document.write('<tr style ="border:1px solid gray">');		
+document.write('<td colpan="2" style ="border:1px solid gray">'+'평균'+'</td>');
+document.write('<td style ="border:1px solid gray">'+kor_sum/30+'</td>');
+document.write('<td style ="border:1px solid gray">'+eng_sum/30+'</td>');
+document.write('<td style ="border:1px solid gray">'+mat_sum/30+'</td>');
+document.write('<td style ="border:1px solid gray">'+total_sum/30+'</td>');
+document.write('<td style ="border:1px solid gray">'+total_avr/30+'</td>');
+document.write('</tr>');
+</script>
+</body>
+</html>

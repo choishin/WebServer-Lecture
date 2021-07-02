@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<body>
+<script>
+for(i=0;i<10;i++) {
+document.write(i);
+}
+document.write("<br>");
+let obj = [10,20,30];
+for (var j in obj) {
+document.write(j+":"+obj[j]+"<br>");
+}
+document.write("<H2>구구단</H2>"); 
+document.write("<TABLE border=0 width=100%>"); 
+for(var i = 1; i < 10;i=i+3){ 
+for(var j = 1; j < 10;j++){
+document.write("<TR>"); 
+document.write("<TD>"+i+" * "+j+" = "+i*j+"</TD>"); 
+document.write("<TD>"+(i+1)+" * "+j+" = "+(i+1)*j+"</TD>"); 
+document.write("<TD>"+(i+2)+" * "+j+" = "+(i+2)*j+"</TD>"); 
+document.write("</TR>");
+}
+document.write("<TR><TD colspan=3><HR></TD></TR>");
+}
+document.write("</TABLE>");
+</script>
+</body>
+<html>
